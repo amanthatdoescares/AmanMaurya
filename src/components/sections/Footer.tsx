@@ -1,10 +1,13 @@
 "use client";
 
-import { Mail, FileText } from "lucide-react";
+import { Mail, FileText, X } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function Footer() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
     <footer className="relative py-32 bg-[#08090C] text-white overflow-hidden border-t border-white/10 z-10">
       
@@ -54,13 +57,50 @@ export default function Footer() {
             <a href="mailto:amanmaurya9209@gmail.com" className="hover:text-white transition-colors flex items-center gap-2">
               <Mail className="w-4 h-4" /> Email
             </a>
-            <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
+            <button onClick={() => setIsResumeOpen(true)} className="hover:text-white transition-colors flex items-center gap-2">
               <FileText className="w-4 h-4" /> Resume
-            </a>
+            </button>
           </div>
         </div>
 
       </div>
+
+      <AnimatePresence>
+        {isResumeOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsResumeOpen(false)}
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-5xl h-[85vh] bg-[#1a1a1a] border border-white/20 shadow-2xl flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-black/50">
+                <h3 className="font-mono text-white text-sm uppercase tracking-widest">Aman_Maurya_Resume.pdf</h3>
+                <button 
+                  onClick={() => setIsResumeOpen(false)}
+                  className="p-2 text-white/50 hover:text-white transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 w-full bg-white">
+                <iframe 
+                  src="/Aman_Maurya_Resume.pdf" 
+                  className="w-full h-full"
+                  title="Aman Maurya Resume"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
