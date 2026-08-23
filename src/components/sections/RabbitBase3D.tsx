@@ -13,7 +13,7 @@ export default function RabbitBase3D() {
 
       {/* Sketchfab Embed Layer with CSS Cropping to hide forced UI */}
       <div className="absolute inset-0 z-30 overflow-hidden pointer-events-none">
-        <div className="absolute inset-[-100px] w-[calc(100%+200px)] h-[calc(100%+200px)]">
+        <div className="absolute -top-[100px] -left-[100px] -right-[100px] -bottom-[200px] w-[calc(100%+200px)] h-[calc(100%+300px)]">
           <iframe 
             title="Poly Art Rabbit" 
             frameBorder="0" 
