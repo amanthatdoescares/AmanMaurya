@@ -9,20 +9,20 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
-    title: "Aurora Subsystem",
-    description: "A high-frequency distributed message queue built for extreme throughput and sub-millisecond latency.",
-    tech: ["Rust", "gRPC", "React", "PostgreSQL"],
-    github: "#",
-    live: "#",
+    title: "Rabbit Base",
+    description: "An autonomous ecosystem featuring open tooling and platforms for decentralized development.",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind"],
+    github: "https://github.com/RabbitBase",
+    live: "https://rabbit-base.vercel.app",
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 2,
-    title: "Nexus Core UI",
-    description: "Component library and design system powering 40+ internal applications with complex state management.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
-    github: "#",
-    live: "#",
+    title: "GetMySeat",
+    description: "A comprehensive seat booking and management system.",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/amanmaurya92/GetMySeat",
+    live: null,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
   },
 ];
@@ -73,18 +73,26 @@ function ProjectCard({ project, index, scrollYProgress }: { project: any, index:
         </p>
         
         <div className="flex gap-4 flex-wrap">
-          <a 
-            href={project.live} 
-            className="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black font-mono text-xs md:text-sm font-bold uppercase tracking-wider rounded-none hover:bg-accent-cyan transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
-          >
-            <FaExternalLinkAlt className="w-3.5 h-3.5" /> Live Demo
-          </a>
-          <a 
-            href={project.github} 
-            className="flex items-center gap-2.5 px-6 py-3.5 border-2 border-white/20 hover:border-white text-white font-mono text-xs md:text-sm font-bold uppercase tracking-wider rounded-none transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
-          >
-            <FaGithub className="w-4 h-4" /> Source
-          </a>
+          {project.live && (
+            <a 
+              href={project.live} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black font-mono text-xs md:text-sm font-bold uppercase tracking-wider rounded-none hover:bg-accent-cyan transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+            >
+              <FaExternalLinkAlt className="w-3.5 h-3.5" /> Live Demo
+            </a>
+          )}
+          {project.github && (
+            <a 
+              href={project.github} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-6 py-3.5 border-2 border-white/20 hover:border-white text-white font-mono text-xs md:text-sm font-bold uppercase tracking-wider rounded-none transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5"
+            >
+              <FaGithub className="w-4 h-4" /> Source
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
